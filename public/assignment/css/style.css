@@ -15,7 +15,6 @@ body {
 .login-txt{
     font-family: Palatino Linotype;
 
-
 }
 .jumbotron{
     background: white;
@@ -25,4 +24,17 @@ body {
     margin: 20px 20px 20px 0;
 
 }
+.glyphicon-check{
+    float: right
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    padding: 2em;
+    margin: -2em;
 
+}
+.profile-margin{
+    margin-top: 30px;
+}
+
+gi
