@@ -75,6 +75,10 @@ a{
     color: black;
 }
 
+textarea.md-textarea {
+    padding: 0rem;
+    min-height: 5rem;
+}
 .at-widgit-heading{
 
     margin-bottom: 50px;
