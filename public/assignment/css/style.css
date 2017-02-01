@@ -118,7 +118,16 @@ textarea.md-textarea {
 }
 
 
-
+.at-scroll{
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right:0px;
+    left:0px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    overflow: auto;
+}
 .jga-toolbar {
     position: absolute;
     right: 15px;
