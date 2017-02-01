@@ -64,6 +64,7 @@ body {
 .profile-margin{
     margin-top: 5px;
     margin-bottom: 50px;
+    overflow-scrolling: auto;
 }
 
 .list-group{
