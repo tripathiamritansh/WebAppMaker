@@ -144,6 +144,9 @@ textarea.md-textarea{
 a{
     color: midnightblue ;
 }
+.at-video-cog{
+    right: 0px;
+}
 /*hide scroll bar*/
 html {
     overflow: scroll;
