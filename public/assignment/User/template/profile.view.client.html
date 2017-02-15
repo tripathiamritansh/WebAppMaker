@@ -1,0 +1,92 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <p class="navbar-text pull-right">
+            <a ng-click="model.update(model.user)"
+               class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+            </a>
+        </p>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                Profile
+            </a>
+
+        </div>
+    </div>
+</nav>
+
+
+
+    <div class="container animate bounceOut profile-margin">
+        <div class="row">
+            <div class="col-xs-12">
+        <h1 class="text-center login-txt">Profile</h1>
+                <div class="alert alert-danger" ng-show="model.error">
+                    {{model.error}}
+                </div>
+
+                <div class="alert alert-success" ng-show="model.message">
+                    {{model.message}}
+                </div>
+        <form>
+            <div class="form-group">
+                <label for="username-profile">Username</label>
+                <input ng-model="model.user.username"
+                       type="text"
+                       class="form-control"
+                       id="username-profile"
+                       placeholder="Username">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input ng-model="model.user.email"
+                       type="email"
+                       class="form-control"
+                       id="email"
+                       placeholder="alice@wonderland.com">
+            </div>
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input ng-model="model.user.firstName"
+                       type="text"
+                       class="form-control"
+                       id="first-name"
+                       placeholder="Alice">
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input ng-model="model.user.lastName"
+                       type="text"
+                       class="form-control"
+                       id="last-name"
+                       placeholder="Wonderland">
+            </div>
+        </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+        <a class="btn btn-primary btn-block"
+           href="#/user/{{model.user._id}}/websites">Websites</a>
+        <a class="btn btn-danger  btn-block"
+           href="#/login">Logout</a>
+            </div>
+        </div>
+    </div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-10">
+            </div>
+            <div class="col-xs-2">
+                <a href="#/profile"><span class="glyphicon glyphicon-user navbar-text pull-right"></span></a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+

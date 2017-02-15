@@ -1,0 +1,35 @@
+
+<div class="container">
+
+
+        <div class="row jumbotron animate bounceOut z-depth-5">
+
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="text-center login-txt"><strong>Login</strong></h1>
+                    <div ng-show="model.error" class="alert alert-danger" role="alert">
+                        {{model.error}}</div>
+                <input ng-model="user.username"
+                        id="username"
+                       type="text"
+                       class="form-control input-margin"
+                       placeholder="username"/>
+                <input ng-model="user.password"
+                        id="password"
+                       type="password"
+                       class="form-control input-margin"
+                       placeholder="password"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 input-margin">
+                <a ng-click="model.login(user)" class="btn btn-primary btn-block">Login</a>
+                <a class="btn btn-success btn-block"
+                   href="#/register">Register</a>
+                </div>
+            </div>
+
+        </div>
+
+</div>
