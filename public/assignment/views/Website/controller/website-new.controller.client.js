@@ -13,7 +13,7 @@
      }
      init();
      function createWebsite(website) {
-         if(website===undefined){
+         if(website===undefined || website.description==undefined ||website.name==undefined){
              vm.nameError="Please Enter Website details";
          }else {
             WebsiteService.createWebsite(vm.userId,website)
