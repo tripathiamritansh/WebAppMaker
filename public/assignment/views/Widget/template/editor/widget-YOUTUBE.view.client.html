@@ -1,0 +1,28 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="at-widgit-heading col-md-6 col-sm-12">
+            <label for="widget-name-youtube"><h4><strong>Name</strong></h4></label>
+            <div class="md-form">
+                <input type="text" id="widget-name-youtube"  placeholder="Widget Name" class="form-control">
+            </div>
+            <label for="widget-text-youtube"><h4><strong>Text</strong></h4></label>
+            <div class="md-form">
+                <input type="text" id="widget-text-youtube"  placeholder="Widget Text" class="form-control">
+            </div>
+            <label for="widget-url-youtube"><h4><strong>URL</strong></h4></label>
+            <div class="md-form">
+                <input type="url" ng-model="model.widget.url" id="widget-url-youtube"  placeholder="URL" class="form-control">
+            </div>
+            <label for="widget-width-youtube"><h4><strong>Width</strong></h4></label>
+            <div class="md-form">
+                <input type="text" id="widget-width-youtube" ng-model="model.widget.width"  placeholder="Widget Width" class="form-control">
+            </div>
+            <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block">
+                Delete
+            </a>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

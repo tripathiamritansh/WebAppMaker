@@ -12,12 +12,26 @@
         ];
         var api={
             "updateUser":updateUser,
+            "createUser":createUser,
+            "deleteUser":deleteUser,
             "findUserByCredentials":findUserByCredentials,
             "findUserById": findUserById
         };
 
         return api;
 
+        function deleteUser(userId){
+            for(var u in users){
+                if(users[u]._id==userId){
+                    users.splice(u,1);
+                }
+            }
+        }
+        function createUser(user){
+            user._id=(new Date()).getTime().toString();
+            users.push(user);
+            return user;
+        }
         function updateUser(userId,newUser) {
             for (u in users){
                 if(users[u]._id==userId){

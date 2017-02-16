@@ -40,7 +40,8 @@
         }
         function createWebsite(userId,website) {
             website.developerId=userId;
-            website._id =(new Date()).getTime();
+            website._id =(new Date()).getTime().toString();
+            website.created=new Date();
             websites.push(website);
 
         }

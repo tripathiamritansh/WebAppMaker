@@ -1,0 +1,95 @@
+
+<div>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4 hidden-xs">
+                <div class="navbar-text pull-right">
+                    <a href="#/user/{{model.userId}}/websites/{{model.websiteId}}/page/new" class="navbar-link">
+                     <span class="glyphicon glyphicon-plus">
+                     </span>
+                    </a>
+                </div>
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        Pages
+                    </a>
+
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="navbar-text pull-left visible-xs">
+                    <a href="#/user/{{model.userId}}/websites/{{model.websiteId}}/page" class="navbar-link">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                </div>
+                <div class="navbar-text pull-right">
+                    <a ng-click="model.createPage(page)" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                    </a>
+                </div>
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        New Page
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4 hidden-xs web-edit-left-pane">
+            <ul class="list-group">
+                <li ng-repeat="page in model.pages" class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-10">
+                            <a href="#/user/{{model.userId}}/websites/{{model.websiteId}}/page/{{page._id}}/widget">{{page.name}}</a>
+                        </div>
+                        <div class="col-xs-2">
+                            <a href="#/user/{{model.userId}}/websites/{{model.websiteId}}/page/{{page._id}}"><span class="glyphicon glyphicon-cog pull-right"></span></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-8 web-edit-right-pane col-xs-12">
+            <div class="alert alert-danger" ng-show="model.error">
+                {{model.error}}
+            </div>
+            <label for="page-name"><h4><strong>Name</strong></h4></label>
+            <div class="md-form">
+                <input ng-model="page.name"
+                       type="text" id="page-name"
+                       placeholder="Page Name"
+                       class="form-control">
+            </div>
+            <label for="page-title"><h4><strong>Title</strong></h4></label>
+            <div class="md-form">
+                <input ng-model="page.description"
+                       type="text" id="page-title"
+                       placeholder="Page Title"
+                       class="form-control">
+            </div>
+            <a ng-click="model.createPage(page)" class="btn btn-primary btn-block">
+                Create
+            </a>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-10">
+            </div>
+            <div class="col-xs-2">
+                <a href="#/user/{{model.userId}}"><span class="glyphicon glyphicon-user navbar-text pull-right"></span></a>
+            </div>
+        </div>
+    </div>
+</nav>
+</div>

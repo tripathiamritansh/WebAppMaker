@@ -13,10 +13,17 @@
         var api={
             "updatePage": updatePage,
             "deletePage": deletePage,
+            "createPage":createPage,
             "findPageById": findPageById,
             "findAllPagesForWebsite": findAllPagesForWebsite
         }
         return api;
+
+        function createPage(wid,page){
+            page.websiteId=wid;
+            page._id=(new Date()).getTime().toString();
+            pages.push(page);
+        }
 
         function updatePage(pageId,page){
             for(var p in pages){
