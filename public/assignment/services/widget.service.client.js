@@ -24,7 +24,13 @@
         this.createWidget=createWidget;
 
         function findAllWidgets(pageId) {
-            return widgets;
+            wig=[];
+            for(var w in widgets){
+                if(widgets[w].pageId==pageId){
+                    wig.push(widgets[w]);
+                }
+            }
+            return wig;
         }
 
         function deleteWidget(wgid) {
