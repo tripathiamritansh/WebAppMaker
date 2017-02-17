@@ -11,14 +11,17 @@
         init();
 
         function login(user) {
-            var user=UserService.findUserByCredentials(user.username, user.password);
-            if(user){
-                $location.url("/user/"+user._id);
-            }
-            else{
-                vm.error="User not found";
+            var promise=UserService.findUserByCredentials(user.username, user.password);
+            promise.success(function (response) {
+                var loginUser=response;
+                if(loginUser!=null){
+                    $location.url("/user/"+user._id);
+                }
+                else{
+                    vm.error="User not found";
+                }
+            });
 
-            }
 
         }
 

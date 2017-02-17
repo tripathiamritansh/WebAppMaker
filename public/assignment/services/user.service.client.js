@@ -2,8 +2,8 @@
     angular
         .module("WebAppMaker")
         .factory("UserService", userService);
-    
-    function userService() {
+    //$http help interact with servers remotely, any server google imdb etc
+    function userService($http) {
         var users=[
             {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
             {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
@@ -51,12 +51,7 @@
             return null;
         }
         function findUserByCredentials(username , password){
-            for(u in users){
-                if(users[u].username==username && users[u].password==password){
-                    return angular.copy(users[u]);
-                }
-            }
-            return null;
+            return $http.get("/api/user?username="+username+"&password="+password);
         }
 
     }
