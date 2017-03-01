@@ -6,22 +6,44 @@
     function profileController($location,$routeParams,UserService) {
         var vm=this;
         var userId = $routeParams.uid;
-        var user = UserService.findUserById(userId);
+        function init(){
+           UserService
+               .findUserById(userId)
+               .success(renderUser);
+        }
+        init();
+
+        function renderUser(user) {
+            vm.user=user;
+        }
+
         vm.deleteUser=deleteUser;
+
         vm.update=function (newUser){
-            var user =UserService.updateUser(userId, newUser);
-            if(user==null){
-                vm.error="Unable to update User";
-            }else{
-                vm.message="User successfully updated";
-            }
+
+            UserService
+                .updateUser(userId, newUser)
+                .success(function(response){
+                    vm.message="User successfully updated";
+                })
+                .error(function () {
+                    vm.error="Unable to update User";
+                });
         };
-        vm.user=user;
 
         function deleteUser() {
-            UserService.deleteUser(userId);
+            var ans=confirm("Are you sure?");
+            if(ans){
+                UserService
+                    .deleteUser(userId)
+                    .success(function () {
+                        $location.url("/login");
+                    })
+                    .error(function () {
+                        vm.error="Unable to remove the user";
+                    })
+            }
 
-            $location.url("/login");
         }
     }
 })();

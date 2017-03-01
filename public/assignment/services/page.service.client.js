@@ -3,13 +3,8 @@
         .module("WebAppMaker")
         .factory("PageService", pageService);
 
-    function pageService() {
-        var pages=
-            [
-                { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
-                { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem" },
-                { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }
-            ];
+    function pageService($http) {
+
         var api={
             "updatePage": updatePage,
             "deletePage": deletePage,
@@ -20,43 +15,23 @@
         return api;
 
         function createPage(wid,page){
-            page.websiteId=wid;
-            page._id=(new Date()).getTime().toString();
-            pages.push(page);
+            return $http.post("/api/website/"+wid+"/page", page);
         }
 
         function updatePage(pageId,page){
-            for(var p in pages){
-                if(pages[p]._id==pageId){
-                    pages[p].name=page.name;
-                    pages[p].description=page.description;
-                }
-            }
+           return $http.put("/api/page/"+pageId, page);
         }
 
         function findPageById(pageId) {
-            for(var p in pages){
-                if(pages[p]._id==pageId){
-                    return angular.copy(pages[p]);
-                }
-            }
-            return null;
+            return $http.get("/api/page/"+pageId);
         }
+
         function deletePage(pageId){
-            for(var p in pages){
-                if(pages[p]._id===pageId){
-                    pages.splice(p,1);
-                }
-            }
+           return $http.delete("/api/page/"+pageId);
         }
+
         function findAllPagesForWebsite(websiteId) {
-            pageList=[];
-            for(var p in pages){
-                if(pages[p].websiteId===websiteId){
-                    pageList.push(pages[p]);
-                }
-            }
-            return pageList;
+            return $http.get("/api/website/"+websiteId+"/page");
         }
     }
 })();

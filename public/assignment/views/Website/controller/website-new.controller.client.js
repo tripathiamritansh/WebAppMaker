@@ -16,8 +16,16 @@
          if(website===undefined || website.description==undefined ||website.name==undefined){
              vm.nameError="Please Enter Website details";
          }else {
-            WebsiteService.createWebsite(vm.userId,website)
-            $location.url("/user/"+vm.userId+"/websites");}
+             website.developerId=vm.userId;
+            WebsiteService
+                .createWebsite(vm.userId,website)
+                .success(function () {
+                    $location.url("/user/"+vm.userId+"/websites");
+                })
+                .error(function () {
+                    vm.nameError="Could Not create new Website";
+                });
+         }
      }
     }
 })();

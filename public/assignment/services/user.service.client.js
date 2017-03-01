@@ -4,51 +4,33 @@
         .factory("UserService", userService);
     //$http help interact with servers remotely, any server google imdb etc
     function userService($http) {
-        var users=[
-            {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-            {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-            {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-            {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-        ];
+
         var api={
             "updateUser":updateUser,
             "createUser":createUser,
             "deleteUser":deleteUser,
             "findUserByCredentials":findUserByCredentials,
-            "findUserById": findUserById
+            "findUserById": findUserById,
+            "findUserByUsername": findUserByUsername
         };
 
         return api;
-
+        function findUserByUsername(username) {
+            return $http.get("/api/user?username="+username);
+        }
         function deleteUser(userId){
-            for(var u in users){
-                if(users[u]._id==userId){
-                    users.splice(u,1);
-                }
-            }
+            return $http.delete('/api/user/'+userId);
         }
         function createUser(user){
-            user._id=(new Date()).getTime().toString();
-            users.push(user);
-            return user;
+            return $http.post("/api/user",user);
         }
         function updateUser(userId,newUser) {
-            for (u in users){
-                if(users[u]._id==userId){
-                    users[u].firstName=newUser.firstName;
-                    users[u].lastName=newUser.lastName;
-                    return users[u];
-                }
-            }
-            return null;
+            return $http.put("/api/user/"+userId, newUser);
+
         }
         function findUserById(uid) {
-            for(u in users){
-                if(users[u]._id==uid){
-                    return angular.copy(users[u]);
-                }
-            }
-            return null;
+            return $http.get("/api/user/"+uid);
+
         }
         function findUserByCredentials(username , password){
             return $http.get("/api/user?username="+username+"&password="+password);

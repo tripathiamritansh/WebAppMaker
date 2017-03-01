@@ -10,20 +10,43 @@
         vm.updatePage=updatePage;
         vm.deletePage=deletePage;
         function init(){
-            vm.pages=PageService.findAllPagesForWebsite(vm.websiteId);
-            vm.page=PageService.findPageById(vm.pageId);
+            PageService
+                .findAllPagesForWebsite(vm.websiteId)
+                .success(renderPageList);
+            PageService
+                .findPageById(vm.pageId)
+                .success(renderPage);
         }
         init();
 
-        function updatePage(page) {
-            PageService.updatePage(vm.pageId,page);
-            $location.url("/user/"+vm.userId+"/websites/"+vm.websiteId+"/page")
+        function renderPageList(pages) {
+            vm.pages=pages;
         }
 
+        function renderPage(page) {
+            vm.page=page;
+        }
+
+        function updatePage(page) {
+            PageService
+                .updatePage(vm.pageId,page)
+                .success(function () {
+                    $location.url("/user/"+vm.userId+"/websites/"+vm.websiteId+"/page");
+                })
+                .error(function () {
+                    vm.error="Could Not Update the page";
+                });
+        }
 
         function deletePage() {
-            PageService.deletePage(vm.pageId);
-            $location.url("/user/"+vm.userId+"/websites/"+vm.websiteId+"/page")
+            PageService
+                .deletePage(vm.pageId)
+                .success(function () {
+                    $location.url("/user/"+vm.userId+"/websites/"+vm.websiteId+"/page");
+                })
+                .error(function () {
+                    vm.error="Could not delete the page";
+                });
         }
     }
 })();

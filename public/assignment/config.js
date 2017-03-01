@@ -3,7 +3,11 @@
         .module("WebAppMaker")
         .config(Configuration);
     
-    function Configuration($routeProvider) {
+    function Configuration($routeProvider, $httpProvider) {
+
+        $httpProvider.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
+        $httpProvider.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
+
         $routeProvider
             .when("/login",{
                 templateUrl:"views/User/template/login.view.client.html",

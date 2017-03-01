@@ -18,8 +18,16 @@
             if(page==undefined){
                 vm.error="Please Enter Page Details";
             }else {
-                PageService.createPage(vm.websiteId, page);
-                $location.url("/user/" + vm.userId + "/websites/" + vm.websiteId + "/page");
+                page.websiteId=vm.websiteId;
+                PageService
+                    .createPage(vm.websiteId, page)
+                    .success(function () {
+                        $location.url("/user/" + vm.userId + "/websites/" + vm.websiteId + "/page");
+                    })
+                    .error(function () {
+                        vm.error="Could not create new page";
+                    });
+
             }
         }
     }

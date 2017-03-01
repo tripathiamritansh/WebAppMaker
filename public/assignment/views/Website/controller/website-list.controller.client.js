@@ -7,10 +7,14 @@
         var vm=this;
         vm.userId=$routeParams.uid;
         function init() {
-            vm.websites=WebsiteService.findAllWebsitesForUser(vm.userId);
-
+            var promise=WebsiteService.findAllWebsitesForUser(vm.userId);
+            promise.success(renderWebsites);
         }
         init();
+        function renderWebsites(websites) {
+
+            vm.websites=websites;
+        }
 
     }
 })();

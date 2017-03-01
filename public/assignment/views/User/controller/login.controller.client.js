@@ -12,17 +12,19 @@
 
         function login(user) {
             var promise=UserService.findUserByCredentials(user.username, user.password);
-            promise.success(function (response) {
+            promise
+                .success(function (response) {
                 var loginUser=response;
                 if(loginUser!=null){
-                    $location.url("/user/"+user._id);
+                    $location.url("/user/"+loginUser._id);
                 }
                 else{
                     vm.error="User not found";
                 }
-            });
-
-
+                })
+                .error(function (err) {
+                    vm.error = "User not found"
+                });
         }
 
     }

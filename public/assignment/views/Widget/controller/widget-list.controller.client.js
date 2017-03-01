@@ -11,7 +11,17 @@
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
-        vm.widgets = WidgetService.findAllWidgets(vm.pageId);
+        function init() {
+            WidgetService
+                .findAllWidgets(vm.pageId)
+                .success(renderWidgetsList);
+        }
+        init();
+
+        function renderWidgetsList(widgets) {
+            vm.widgets=widgets
+        }
+        // $('.widget-list').sortable();
 
         function getWidgetTemplateUrl(widgetType) {
             var url = 'views/widget/template/widget-'+widgetType+'.view.client.html';
