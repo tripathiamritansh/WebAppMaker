@@ -21,7 +21,9 @@
         function renderWidgetsList(widgets) {
             vm.widgets=widgets
         }
-        // $('.widget-list').sortable();
+        // $('.widget-list').sortable({
+        //     axis:"y"
+        // });
 
         function getWidgetTemplateUrl(widgetType) {
             var url = 'views/widget/template/widget-'+widgetType+'.view.client.html';

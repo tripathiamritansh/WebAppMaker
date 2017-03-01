@@ -11,6 +11,7 @@
         this.deleteWidget =deleteWidget;
         this.updateWidget=updateWidget;
         this.createWidget=createWidget;
+        this.widgetUpdateOrder=widgetUpdateOrder;
 
         function findAllWidgets(pageId) {
            return $http.get("/api/page/"+pageId+"/widget");
@@ -30,6 +31,9 @@
         }
         function findWidgetById(widgetId) {
             return $http.get("/api/widget/"+widgetId);
+        }
+        function widgetUpdateOrder(pageId,si,ei) {
+            return $http.put("/page/"+pageId+"/widget?initial="+si+"&final="+ei);
         }
     }
 })();
