@@ -33,7 +33,8 @@
             return $http.get("/api/widget/"+widgetId);
         }
         function widgetUpdateOrder(pageId,si,ei) {
-            return $http.put("/page/"+pageId+"/widget?initial="+si+"&final="+ei);
+
+            return $http.put("/api/page/"+pageId+"/widget?initial="+si+"&final="+ei);
         }
     }
 })();

@@ -5,7 +5,7 @@ module.exports=function (app) {
     app.post("/api/page/:pageId/widget", createWidget);
     app.put("/api/widget/:widgetId", updateWidget);
     app.delete("/api/widget/:widgetId", deleteWidget);
-    app.put("/page/:pid/widget",updateWidgetOrder);
+    app.put("/api/page/:pageId/widget",updateWidgetOrder);
 
     var multer = require('multer'); // npm install multer --save
     var storage = multer.diskStorage({
@@ -139,16 +139,32 @@ module.exports=function (app) {
     }
 
     function updateWidgetOrder(req,res) {
+        console.log("hey");
         var pageId = req.params.pageId;
         var startIndex = parseInt(req.query.initial);
         var endIndex = parseInt(req.query.final);
+
         var index=[]
-        for(var p in pages){
-            if(pages[p]._id==pageId){
-                index.push(p);
+        for(var w in widgets){
+            if(widgets[w].pageId==pageId){
+                index.push(w);
             }
         }
-        console.log(index);
+
+        for(var i=startIndex;i<endIndex;i++){
+            var temp=widgets[index[i]];
+            widgets[index[i]]=widgets[index[i+1]];
+            widgets[index[i+1]]=temp;
+        }
+
+        for(var i=startIndex;i>endIndex;i--){
+            var temp=widgets[index[i]];
+            widgets[index[i]]=widgets[index[i-1]];
+            widgets[index[i-1]]=temp;
+        }
+
+        res.sendStatus(200);
+
 
     }
 };
