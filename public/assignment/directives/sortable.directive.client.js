@@ -8,7 +8,9 @@
         function linkFunc(scope, element, attributes) {
             var startIndex;
             var pageId=$routeParams.pid;
-            element.sortable({axis:'y',
+            element.sortable({
+                axis:'y',
+                cursor: "move",
 
                 start:function(event,ui){
                     startIndex=ui.item.index();
