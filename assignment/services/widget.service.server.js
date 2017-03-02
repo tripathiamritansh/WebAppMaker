@@ -140,7 +140,7 @@ module.exports=function (app) {
     }
 
     function updateWidgetOrder(req,res) {
-        console.log("hey");
+
         var pageId = req.params.pageId;
         var startIndex = parseInt(req.query.initial);
         var endIndex = parseInt(req.query.final);
