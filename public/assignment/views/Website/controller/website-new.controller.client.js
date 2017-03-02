@@ -22,6 +22,7 @@
              vm.nameError="Please Enter Website details";
          }else {
              website.developerId=vm.userId;
+             website.created=(new Date().getTime()).toString();
             WebsiteService
                 .createWebsite(vm.userId,website)
                 .success(function () {
