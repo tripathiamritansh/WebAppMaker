@@ -47,6 +47,8 @@ module.exports=function (app) {
 
     var widgets = [
         { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
+        { "_id": "123", "widgetType": "HEADER", "pageId": "123", "size": 2, "text": "Yahoo!"},
+        { "_id": "234", "widgetType": "HEADER", "pageId": "456", "size": 4, "text": "Page456"},
         { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
         { "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
             "url": "https://i.kinja-img.com/gawker-media/image/upload/s--UE7cu6DV--/c_scale,fl_progressive,q_80,w_800/xoo0evqxzxrrmrn4ayoq.jpg"},
@@ -72,7 +74,7 @@ module.exports=function (app) {
 
     function createWidget(req,res){
         var newWidget =req.body;
-        console.log(newWidget);
+
         newWidget._id =(new Date()).getTime().toString();
         widgets.push(newWidget);
         res.send(newWidget);
@@ -81,8 +83,7 @@ module.exports=function (app) {
     function updateWidget(req, res) {
         var wgid=req.params.widgetId;
         var widget=req.body;
-        var type=widget.widgetType
-        console.log(widget);
+        var type=widget.widgetType;
         for(var w in widgets){
             if(widgets[w]._id===wgid){
                 switch (type){
@@ -99,7 +100,7 @@ module.exports=function (app) {
                         break;
                     case "YOUTUBE":
                         widgets[w].url=widget.url;
-                        widgets[w].width=width.width;
+                        widgets[w].width=widget.width;
                         res.send(200);
                         return;
                         break;
@@ -137,7 +138,17 @@ module.exports=function (app) {
         res.sendStatus(404).send("Widget not found for website Id: "+widgetId);
     }
 
-    function () {
+    function updateWidgetOrder(req,res) {
+        var pageId = req.params.pageId;
+        var startIndex = parseInt(req.query.initial);
+        var endIndex = parseInt(req.query.final);
+        var index=[]
+        for(var p in pages){
+            if(pages[p]._id==pageId){
+                index.push(p);
+            }
+        }
+        console.log(index);
 
     }
 };

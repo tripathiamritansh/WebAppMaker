@@ -25,14 +25,14 @@
         init();
 
         function createWidget(newWidget) {
-            console.log(newWidget);
+
              WidgetService
                  .createWidget(vm.pageId, newWidget)
                  .success(renderWidget);
 
         }
         function renderWidget(widget) {
-            console.log(widget);
+
             $location.url("/user/" + vm.userId + "/websites/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + widget._id);
         }
     }

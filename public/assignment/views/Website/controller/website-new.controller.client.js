@@ -9,9 +9,14 @@
 
      vm.createWebsite =createWebsite;
      function init() {
-         vm.websites=WebsiteService.findAllWebsitesForUser(vm.userId);
+         WebsiteService
+             .findAllWebsitesForUser(vm.userId)
+             .success(renderWebsites);
      }
      init();
+     function renderWebsites(websites) {
+         vm.websites=websites;
+     }
      function createWebsite(website) {
          if(website===undefined || website.description==undefined ||website.name==undefined){
              vm.nameError="Please Enter Website details";

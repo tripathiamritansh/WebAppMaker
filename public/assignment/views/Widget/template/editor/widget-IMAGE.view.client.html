@@ -4,28 +4,51 @@
         <div class="at-widgit-heading col-md-6 col-sm-12">
             <form action="/api/upload" method="post" enctype="multipart/form-data">
                 <label for="widget-name-image"><h4><strong>Name</strong></h4></label>
-                <div class="md-form">
-                    <input type="text" id="widget-name-image" placeholder="Widget Name" class="form-control">
-                </div>
+                    <div class="md-form">
+                        <input type="text"
+                               id="widget-name-image"
+                               placeholder="Widget Name"
+                               class="form-control">
+                    </div>
+
                 <label for="widget-text-image"><h4><strong>Text</strong></h4></label>
+                    <div class="md-form">
+                        <input type="text"
+                               id="widget-text-image"
+                               placeholder="Widget Text"
+                               class="form-control">
+                    </div>
+
+                <label for="widget-url"> <h4><strong>URL</strong> </h4> </label>
+                
                 <div class="md-form">
-                    <input type="text" id="widget-text-image" placeholder="Widget Text" class="form-control">
+                <input type="url"
+                       ng-model="model.widget.url"
+                       value="http://www.lipsum.com"
+                       id="widget-url">
                 </div>
-                <input type="url" ng-model="model.widget.url" id="widget-
-                <label for="widget-url"><h4><strong>URL</strong></h4></label>
-                <div class="md-form">url" placeholder="Widget URL"
+                <div class="md-form" placeholder="Widget URL" class="form-control"></div>
+
+                <label for="widget-width"><h4><strong>Width</strong></h4></label>
+
+                <div class="md-form">
+                    <input type="text"
+                           name="width"
+                           ng-model="model.widget.width"
+                           id="widget-width"
+                           placeholder="Widget Width"
                            class="form-control">
                 </div>
-                <label for="widget-width"><h4><strong>Width</strong></h4></label>
+                <input name="widgetId"
+                       value="{{model.widget._id}}" style="display: none"/>
+                <label for="file-upload"><h4><strong>Upload from Device</strong></h4></label>
                 <div class="md-form">
-                    <input type="text" name="width" ng-model="model.widget.width" id="widget-width"
-                           placeholder="Widget Width" class="form-control">
+
+                <input id="file-upload"
+                       name="myFile"
+                       type="file"
+                       placeholder="Upload your file">
                 </div>
-                <input name="widgetId" value="{{model.widget._id}}" style="display: none"/>
-
-                <label for="file-upload"><h4><strong>Upload</strong></h4></label>
-                <input id="file-upload" name="myFile" type="file" placeholder="Upload your file">
-
                 <button type="submit" class="btn btn-primary btn-block">
                     Upload Image
                 </button>

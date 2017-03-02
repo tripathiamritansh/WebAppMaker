@@ -13,6 +13,7 @@
         vm.getEditorTemplateUrl = getEditorTemplateUrl;
         vm.deleteWidget= deleteWidget;
         vm.updateWidget=updateWidget;
+
         function init() {
             WidgetService
                 .findWidgetById(vm.widgetId)
@@ -23,9 +24,7 @@
         init();
 
         function renderWidget(widget) {
-
             vm.widget=widget;
-
         }
 
         function getEditorTemplateUrl(type) {
@@ -38,7 +37,7 @@
         }
 
         function updateWidget(widget) {
-            console.log(widget);
+
             WidgetService
                 .updateWidget(widget,vm.widgetId)
                 .success(function () {

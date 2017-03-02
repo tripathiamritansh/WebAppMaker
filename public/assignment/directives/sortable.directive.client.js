@@ -12,7 +12,16 @@
                 update:function(event, ui){
                     var si=ui.item.startlocation;
                     var ei=ui.item.index();
-                    sortableController.widgetsSort(si,ei);
+                    console.log(si);
+                    var pageId=$routeParams.pid;
+                    WidgetService
+                        .widgetUpdateOrder(pageId,start,end)
+                        .success(function () {
+                            console.log("Widget Updated");
+                        })
+                        .error(function () {
+                            console.log("update error");
+                        });
                 },
                 axis:'y',
                 cursor:"move"
@@ -24,16 +33,13 @@
         };
     }
 
-    function sortableCOntroller(WidgetService,$routeParams) {
+    function sortableController(WidgetService,$routeParams) {
         var vm =this;
         vm.wSort=wSort;
 
         function wSort(start,end){
-            var pageId=$routeParams.pid;
-            WidgetService
-                .updateWidgetOrder(pageId,start,end)
-                .success()
-                .error();
+
+
         }
     }
 })();
