@@ -27,6 +27,7 @@
         }
 
         function findWebsiteById(websiteId){
+            console.log("wsc"+websiteId);
            return $http.get("/api/website/"+websiteId);
         }
 

@@ -20,10 +20,11 @@
      }
      init();
      function renderWebsites(websites) {
+
          vm.websites=websites;
      }
      function renderWebsite(website) {
-
+         console.log(website);
          vm.website=website;
      }
      function updateWebsite(website) {
