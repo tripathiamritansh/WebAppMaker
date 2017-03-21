@@ -4,13 +4,16 @@
 var mongoose =require('mongoose');
 var q = require('q');
 var userSchema=require('./user.schema.server');
-var userModel = mongoose. model('userModel', userSchema);
+var userModel = mongoose.model('userModel', userSchema);
+
 userModel.createUser=createUser;
 userModel.findUserById =findUserById;
 userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials=findUserByCredentials;
 userModel.deleteUser = deleteUser;
 userModel.updateUser =updateUser;
+
+module.exports= userModel;
 
 function createUser(user) {
     var deferred = q.defer();
@@ -100,7 +103,5 @@ function deleteUser(userId) {
         });
     return deffered.promise;
 }
-
-module.exports= userModel;
 
 

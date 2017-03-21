@@ -4,7 +4,7 @@
 var mongoose =require('mongoose');
 var q = require('q');
 var websiteSchema=require('./website.schema.server');
-var websiteModel = mongoose. model('websiteModel', websiteSchema);
+var websiteModel = mongoose.model('websiteModel', websiteSchema);
 var userModel=require('../user/user.model.server');
 
 websiteModel.createWebsiteForUser = createWebsiteForUser;
@@ -12,6 +12,8 @@ websiteModel.findAllWebsitesForUser= findAllWebsitesForUser;
 websiteModel.findWebsiteById=findWebsiteById;
 websiteModel.updateWebsite=updateWebsite;
 websiteModel.deleteWebsite = deleteWebsite;
+
+module.exports=websiteModel;
 
 function deleteWebsite(websiteId) {
     var deferred=q.defer();
@@ -51,6 +53,8 @@ function createWebsiteForUser(userId, website) {
                 userModel
                     .findUserById(userId)
                     .then(function(user){
+
+                        console.log(user.websites);
                         user.websites.push(website);
                         user.save();
                     });
@@ -76,7 +80,8 @@ function findAllWebsitesForUser(userId) {
 function findWebsiteById(websiteId) {
     var deferred=q.defer();
     websiteModel
-        .find({_id:websiteId}, function (err,websites) {
+        .findById({_id:websiteId}, function (err,websites) {
+
             if(err){
                 deferred.reject(err);
             }else {
@@ -85,5 +90,3 @@ function findWebsiteById(websiteId) {
         });
     return deferred.promise;
 }
-
-module.exports=websiteModel;
