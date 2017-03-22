@@ -13,8 +13,11 @@ pageModel.findPageById = findPageById;
 pageModel.updatePage=updatePage;
 pageModel.deletePage=deletePage;
 
+module.exports=pageModel;
+
 function deletePage(pageId) {
     var deferred=q.defer();
+
     pageModel
         .findByIdAndRemove({_id:pageId}, function (err,page) {
             if(err){
@@ -68,6 +71,7 @@ function findAllPagesForWebsite(websiteId) {
 }
 
 function createPage(websiteId,page) {
+    console.log(pageModel);
     var deferred = q.defer();
     page._website=websiteId;
     pageModel
@@ -93,7 +97,6 @@ function createPage(websiteId,page) {
     return deferred.promise;
 }
 
-module.exports=pageModel;
 
 
 //TODO: ADD DELETE FUNCTIONS IN PAGES,USER, WEBSITE, WIDGET AND FINISH FROM PAGE.MODEL.SERVER.JS

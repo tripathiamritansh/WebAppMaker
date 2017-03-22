@@ -24,3 +24,16 @@ var widgetSchema= mongoose.Schema({
 },{collection:'widget'});
 
 module.exports=widgetSchema;
+
+widgetSchema.post('remove',function (doc) {
+   var pageModel=require('../page/page.model.server');
+   pageModel
+       .findPageById(doc._page)
+       .then(
+           function (page) {
+               var index=page.widgets.indexOf(doc._id);
+               page.widgets.splice(index,1);
+               page.save();
+           }
+       );
+});

@@ -4,8 +4,8 @@
 var mongoose = require('mongoose');
 var q=require('q');
 var widgetSchema=require('./widget.schema.server');
+var pageModel=require('../page/page.model.server');
 var widgetModel=mongoose.model('widgetModel',widgetSchema);
-var pageModel=require('../../model/page/page.model.server');
 
 widgetModel.createWidget=createWidget;
 widgetModel.findAllWidgetsForPage=findAllWidgetsForPage;
@@ -68,16 +68,18 @@ function findAllWidgetsForPage(pageId){
 }
 
 function createWidget(pageId, widget) {
+    var pageModel=require('../page/page.model.server');
     var deferred = q.defer();
     widget._page=pageId;
+    console.log("ADfsdfs");
     console.log(widget);
     widgetModel
         .create(widget,function (err,widget) {
             console.log(err);
-
             if(err){
                 deferred.reject(err);
             }else{
+                console.log(pageModel);
                 pageModel
                     .findPageById(pageId)
                     .then(function (page) {

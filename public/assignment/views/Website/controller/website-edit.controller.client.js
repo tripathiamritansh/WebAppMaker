@@ -20,13 +20,14 @@
      }
      init();
      function renderWebsites(websites) {
-
          vm.websites=websites;
      }
+
      function renderWebsite(website) {
          console.log(website);
          vm.website=website;
      }
+
      function updateWebsite(website) {
          WebsiteService
              .updateWebsite(vm.websiteId,website)
@@ -36,7 +37,6 @@
              .error(function () {
                  vm.error="Unable to update Website";
              });
-
      }
 
      function deleteWebsite() {

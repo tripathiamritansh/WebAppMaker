@@ -1,7 +1,7 @@
 //module is node.js function, thisfunction can not be accessed from outside
 module.exports=function (app) {
     var userModel = require('./model/user/user.model.server');
-    var websiteModel = require('./model/website/website.model.server')
+    var websiteModel = require('./model/website/website.model.server');
     var pageModel = require('./model/page/page.model.server');
     var widgetModel=require('./model/widget/widget.model.server');
     require('./services/user.service.server')(app, userModel);
