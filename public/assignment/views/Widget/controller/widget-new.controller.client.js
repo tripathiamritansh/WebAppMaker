@@ -12,20 +12,20 @@
 
         function init() {
             vm.newHeader = {
-                "_id": "", "widgetType": "HEADER", "pageId": vm.pageId, "size": 0, "text": ""
+                "widgetType": "HEADER", "_page": vm.pageId, "size": 0, "text": ""
             };
             vm.newYoutube = {
-                "_id": "", "widgetType": "YOUTUBE", "pageId": vm.pageId, "width": "",
+                "widgetType": "YOUTUBE", "_page": vm.pageId, "width": "",
                 "url": ""
             };
-            vm.newHTML = {"_id": "", "widgetType": "HTML", "pageId": vm.pageId, "text": ""};
-            vm.newIMAGE = {"_id": "", "widgetType": "IMAGE", "pageId": vm.pageId, "width": "", "url": ""};
+            vm.newHTML = {"widgetType": "HTML", "_page": vm.pageId, "text": ""};
+            vm.newIMAGE = {"widgetType": "IMAGE", "_page": vm.pageId, "width": "", "url": ""};
         }
 
         init();
 
         function createWidget(newWidget) {
-
+            console.log(newWidget);
              WidgetService
                  .createWidget(vm.pageId, newWidget)
                  .success(renderWidget);

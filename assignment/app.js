@@ -3,10 +3,11 @@ module.exports=function (app) {
     var userModel = require('./model/user/user.model.server');
     var websiteModel = require('./model/website/website.model.server')
     var pageModel = require('./model/page/page.model.server');
+    var widgetModel=require('./model/widget/widget.model.server');
     require('./services/user.service.server')(app, userModel);
     require('./services/website.service.server')(app, websiteModel,userModel);
     require('./services/page.service.server')(app,pageModel);
-    require('./services/widget.service.server')(app);
+    require('./services/widget.service.server')(app, widgetModel);
 
     //TODO: create services for other entities, website widgets pages
 };
