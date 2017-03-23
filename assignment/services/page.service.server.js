@@ -25,7 +25,7 @@ module.exports=function (app, pageModel) {
                     }
                 );
         // pages.push(newPage);
-        // console.log(pages);
+
         // res.sendStatus(200);
     }
 

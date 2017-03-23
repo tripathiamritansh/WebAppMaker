@@ -11,12 +11,12 @@
         init();
 
         function login(user) {
-            console.log("kjahdjk"+user);
+
             var promise=UserService.findUserByCredentials(user.username, user.password);
             promise
                 .success(function (response) {
                 var loginUser=response;
-                console.log(loginUser);
+
                 if(loginUser.length!=0){
                     $location.url("/user/"+loginUser._id);
                 }

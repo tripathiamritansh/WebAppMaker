@@ -39,7 +39,7 @@ function sortWidget(index1,index2,pageId) {
                     pageModel
                         .findPageById(pageId)
                         .then(function (page) {
-                            console.log(page);
+
                         });
                     deferred.resolve()
                 });
@@ -62,7 +62,7 @@ function deleteWidget(widgetId){
 
 function updateWidget(widgetId,widget) {
     var deferred=q.defer();
-    console.log("model "+widget);
+
     widgetModel
         .update({_id:widgetId},{$set:widget},function(err,widget){
             if(err){
@@ -111,15 +111,14 @@ function createWidget(pageId, widget) {
     var pageModel=require('../page/page.model.server');
     var deferred = q.defer();
     widget._page=pageId;
-    console.log("ADfsdfs");
-    console.log(widget);
+
     widgetModel
         .create(widget,function (err,widget) {
-            console.log(err);
+
             if(err){
                 deferred.reject(err);
             }else{
-                console.log(pageModel);
+
                 pageModel
                     .findPageById(pageId)
                     .then(function (page) {

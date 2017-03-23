@@ -32,11 +32,9 @@
                     data = data.substring(0,data.length - 1);
                     data = JSON.parse(data);
                     vm.photos = data.photos;
-                    console.log("data :"+data);
-                    console.log("photos "+vm.photos);
-                    //console.log(response);
+
                 },function (error) {
-                    //console.log(error);
+
                 });
         }
 
@@ -50,7 +48,7 @@
                     $location.url("/user/"+vm.userId+"/websites/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
                 })
                 .error(function (error) {
-                    console.log(error);
+
                     vm.error="Failed to add flickr image";
                 });
         }

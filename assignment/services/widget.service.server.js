@@ -37,7 +37,7 @@ module.exports=function (app, widgetModel) {
                     widget.width=width;
                     widget.url=req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
                     widget.save();
-                    console.log(pageId);
+
                     res.redirect("/assignment/#/user/" + userId + "/websites/" + websiteId + "/page/" + pageId + "/widget/" + widgetId);
                 },function (err) {
                     res.sendStatus(404);
@@ -105,8 +105,7 @@ module.exports=function (app, widgetModel) {
     function updateWidget(req, res) {
         var wgid=req.params.widgetId;
         var widget=req.body;
-        console.log("server");
-        console.log(wgid+" "+widget);
+
         widgetModel
             .updateWidget(wgid,widget)
             .then(function (widget) {

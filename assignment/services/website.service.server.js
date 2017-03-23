@@ -78,8 +78,7 @@ module.exports=function (app,websiteModel,userModel) {
 
     function findWebsiteById(req,res) {
         var wid=req.params.websiteId;
-        console.log(websiteModel);
-        console.log(wid);
+
         websiteModel
             .findWebsiteById(wid)
             .then(

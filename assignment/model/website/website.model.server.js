@@ -54,7 +54,7 @@ function createWebsiteForUser(userId, website) {
                     .findUserById(userId)
                     .then(function(user){
 
-                        console.log(user.websites);
+
                         user.websites.push(website);
                         user.save();
                     });
@@ -79,11 +79,10 @@ function findAllWebsitesForUser(userId) {
 
 function findWebsiteById(websiteId) {
     var deferred=q.defer();
-    console.log("wm "+websiteId);
+
     websiteModel
         .findById({_id:websiteId}, function (err,websites) {
-            console.log(websites);
-            console.log(err);
+
             if(err){
                 deferred.reject(err);
             }else {

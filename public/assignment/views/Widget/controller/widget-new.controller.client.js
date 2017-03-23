@@ -25,7 +25,7 @@
         init();
 
         function createWidget(newWidget) {
-            console.log(newWidget);
+
              WidgetService
                  .createWidget(vm.pageId, newWidget)
                  .success(renderWidget);

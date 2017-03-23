@@ -21,12 +21,12 @@ module.exports=function (app, userModel) {
 
     function createUser(req, res) {
         var newUser =req.body;
-        console.log("Ss "+newUser.username);
+
         userModel
             .createUser(newUser)
             .then(
                 function (user) {
-                    console.log(user);
+
                     res.json(user);
                 }, function (error) {
                 res.sendStatus(400).send(error);
@@ -36,7 +36,7 @@ module.exports=function (app, userModel) {
 
     function deleteUser(req,res) {
         var userId=req.params.userId;
-        console.log(userId);
+
         userModel
             .deleteUser(userId)
             .then(
@@ -143,7 +143,7 @@ module.exports=function (app, userModel) {
             .findUserByCredentials(username,password)
             .then(
                 function (user) {
-                    console.log(user);
+
                     res.json(user[0]);
                 },
                 function (error) {

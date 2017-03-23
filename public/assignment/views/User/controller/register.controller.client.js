@@ -15,11 +15,11 @@
                     if(user.length!=0)
                     vm.error="Username taken";
                     else{
-                        console.log(userCopy);
+
                         UserService
                             .createUser(userCopy)
                             .success(function (newUser) {
-                                console.log(newUser);
+
                                 $location.url("/user/"+newUser._id);
                             })
                             .error(function () {

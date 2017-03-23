@@ -132,6 +132,9 @@ textarea.md-textarea{
     margin-top: 50px;
     overflow: auto;
 }
+.img-width{
+    width: 100%;
+}
 .jga-toolbar {
     position: absolute;
     right: 15px;

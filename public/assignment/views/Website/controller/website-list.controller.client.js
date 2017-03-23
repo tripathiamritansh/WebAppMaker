@@ -12,7 +12,7 @@
         }
         init();
         function renderWebsites(websites) {
-            console.log(websites);
+
             vm.websites=websites;
         }
 

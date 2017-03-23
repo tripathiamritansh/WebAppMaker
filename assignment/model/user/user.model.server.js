@@ -17,10 +17,10 @@ module.exports= userModel;
 
 function createUser(user) {
     var deferred = q.defer();
-    console.log("user1"+user);
+
     userModel
         .create(user, function (err,doc) {
-            console.log(err);
+
             if(err){
                 deferred.reject(err);
             }else {
@@ -45,14 +45,14 @@ function findUserById(userId) {
 
 function findUserByUsername(username) {
     var deffered = q.defer();
-    console.log(username);
+
     userModel
         .find({username:username}, function (err,user) {
             if(err){
-                console.log(err);
+
                 deffered.reject(err);
             }else {
-                console.log(user);
+
                 deffered.resolve(user);
             }
         });
@@ -61,11 +61,11 @@ function findUserByUsername(username) {
 
 function findUserByCredentials(username,password) {
     var deffered = q.defer();
-    console.log("username "+username+" pass "+password);
+
     userModel
         .find({username:username, password:password}, function (err,user) {
 
-            console.log(user);
+
             if (err) {
                 deffered.reject(err);
             } else {

@@ -71,7 +71,7 @@ function findAllPagesForWebsite(websiteId) {
 }
 
 function createPage(websiteId,page) {
-    console.log(pageModel);
+
     var deferred = q.defer();
     page._website=websiteId;
     pageModel
@@ -83,10 +83,7 @@ function createPage(websiteId,page) {
                     .findWebsiteById(websiteId)
                     .then(
                         function (website) {
-                            console.log("website "+website);
-                            console.log("website "+website.pages);
-                            // console.log("wid "+websiteId);
-                            // console.log("page "+page);
+
                             website.pages.push(page._id);
                             website.save();
                         }

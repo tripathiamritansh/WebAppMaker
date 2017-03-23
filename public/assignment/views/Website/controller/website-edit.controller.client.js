@@ -24,7 +24,7 @@
      }
 
      function renderWebsite(website) {
-         console.log(website);
+
          vm.website=website;
      }
 
@@ -46,7 +46,7 @@
                  $location.url("/user/"+vm.userId+"/websites")
              })
              .error(function (response) {
-                 console.log(response)
+
                  vm.error="Unable to delete";
              });
 
