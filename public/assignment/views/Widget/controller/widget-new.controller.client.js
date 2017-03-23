@@ -20,8 +20,8 @@
             };
             vm.newHTML = {"widgetType": "HTML", "_page": vm.pageId, "text": ""};
             vm.newIMAGE = {"widgetType": "IMAGE", "_page": vm.pageId, "width": "", "url": ""};
+            vm.newText={"widgetType": "TEXT","_page": vm.pageId, "text":"", "rows": 0, "placeholder":"", "formatted":false};
         }
-
         init();
 
         function createWidget(newWidget) {

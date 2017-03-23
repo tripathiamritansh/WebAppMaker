@@ -4,8 +4,6 @@
         .service("WidgetService", WidgetService);
     
     function WidgetService($http) {
-
-
         this.findAllWidgets = findAllWidgets;
         this.findWidgetById = findWidgetById;
         this.deleteWidget =deleteWidget;
@@ -26,6 +24,7 @@
         }
 
         function updateWidget(widget,wgid) {
+            console.log(widget,wgid);
             return $http.put('/api/widget/'+wgid, widget);
 
         }

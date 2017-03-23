@@ -1,24 +1,34 @@
 
 
-<div class="container-fluid">
-
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="at-widgit-heading col-md-6 col-sm-12">
-
-            <label for="widget-text"><h4><strong>Text</strong></h4></label>
-            <div class="md-form">
-                <input type="text"
-                       ng-model="model.widget.text";
-                       id="widget-text"  placeholder="Widget Text" class="form-control">
-            </div>
-
-            <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block">
-                Delete
-            </a>
-        </div>
-        <div class="col-md-3"></div>
+<div class="container-fluid html-custom">
+    <div ng-model="model.widget.text"
+         text-angular
+         ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
     </div>
+
+    <!--<div class="row">-->
+        <!--<div class="col-md-3"></div>-->
+        <!--<div class="at-widgit-heading col-md-6 col-sm-12">-->
+
+            <!--<label for="widget-text"><h4><strong>Text</strong></h4></label>-->
+            <!--<div class="md-form">-->
+                <!--<input type="text"-->
+                       <!--ng-model="model.widget.text";-->
+                       <!--id="widget-text"  placeholder="Widget Text" class="form-control">-->
+            <!--</div>-->
+
+            <!--<a ng-click="model.deleteWidget()" class="btn btn-danger btn-block">-->
+                <!--Delete-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--<div class="col-md-3"></div>-->
+    <!--</div>-->
+
+    <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block">
+        Delete
+    </a>
 </div>
 
 

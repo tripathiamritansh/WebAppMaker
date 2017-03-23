@@ -78,11 +78,13 @@ module.exports=function (app,websiteModel,userModel) {
 
     function findWebsiteById(req,res) {
         var wid=req.params.websiteId;
+        console.log(websiteModel);
+        console.log(wid);
         websiteModel
             .findWebsiteById(wid)
             .then(
                 function (website) {
-                    res.send(website[0]);
+                    res.send(website);
                 },function (error) {
                     res.sendStatus(404).send(error);
                 }

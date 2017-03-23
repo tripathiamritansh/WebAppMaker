@@ -105,6 +105,8 @@ module.exports=function (app, widgetModel) {
     function updateWidget(req, res) {
         var wgid=req.params.widgetId;
         var widget=req.body;
+        console.log("server");
+        console.log(wgid+" "+widget);
         widgetModel
             .updateWidget(wgid,widget)
             .then(function (widget) {
@@ -183,30 +185,38 @@ module.exports=function (app, widgetModel) {
 
     function updateWidgetOrder(req,res) {
 
-        var pageId = req.params.pageId;
-        var startIndex = parseInt(req.query.initial);
-        var endIndex = parseInt(req.query.final);
+         var pageId = req.params.pageId;
+         var startIndex = parseInt(req.query.initial);
+         var endIndex = parseInt(req.query.final);
 
-        var index=[]
-        for(var w in widgets){
-            if(widgets[w].pageId==pageId){
-                index.push(w);
-            }
-        }
-
-        for(var i=startIndex;i<endIndex;i++){
-            var temp=widgets[index[i]];
-            widgets[index[i]]=widgets[index[i+1]];
-            widgets[index[i+1]]=temp;
-        }
-
-        for(var i=startIndex;i>endIndex;i--){
-            var temp=widgets[index[i]];
-            widgets[index[i]]=widgets[index[i-1]];
-            widgets[index[i-1]]=temp;
-        }
-
-        res.sendStatus(200);
+         widgetModel
+             .sortWidget(startIndex,endIndex,pageId)
+             .then(function () {
+                 res.sendStatus(200);
+             }, function (error) {
+                 res.sendStatus(400).send(error);
+             });
+         //
+        // var index=[]
+        // for(var w in widgets){
+        //     if(widgets[w].pageId==pageId){
+        //         index.push(w);
+        //     }
+        // }
+        //
+        // for(var i=startIndex;i<endIndex;i++){
+        //     var temp=widgets[index[i]];
+        //     widgets[index[i]]=widgets[index[i+1]];
+        //     widgets[index[i+1]]=temp;
+        // }
+        //
+        // for(var i=startIndex;i>endIndex;i--){
+        //     var temp=widgets[index[i]];
+        //     widgets[index[i]]=widgets[index[i-1]];
+        //     widgets[index[i-1]]=temp;
+        // }
+        //
+        // res.sendStatus(200);
 
 
     }
