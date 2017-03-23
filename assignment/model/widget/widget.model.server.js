@@ -17,11 +17,13 @@ widgetModel.sortWidget = sortWidget;
 module.exports=widgetModel;
 
 function sortWidget(index1,index2,pageId) {
+
     var pageModel=require('../page/page.model.server');
     var deferred = q.defer();
     pageModel
         .findPageById(pageId)
         .then(function (page) {
+
             for(var i=index1; i<index2;i++){
                 var temp = page.widgets[i];
                 page.widgets[i]=page.widgets[i+1];
@@ -29,23 +31,25 @@ function sortWidget(index1,index2,pageId) {
             }
 
             for(var i=index1;i>index2;i--){
+
                 var temp = page.widgets[i];
                 page.widgets[i] = page.widgets[i-1];
-                page.widget[i-1]=temp;
+                page.widgets[i-1]=temp;
             }
 
             pageModel
-                .update({_id:pageId},{$set: {widgets:page.widgets}},function (err, updatedPage) {
-                    pageModel
-                        .findPageById(pageId)
-                        .then(function (page) {
+                .update({_id:pageId},{$set: {widgets:page.widgets}}, function (err, updatedPage) {
 
-                        });
-                    deferred.resolve()
+                   if(err){
+                       deferred.reject(err);
+                   }else{
+                       deferred.resolve();
+                   }
                 });
         });
-    return deferred.promise
+    return deferred.promise;
 }
+
 function deleteWidget(widgetId){
     var deferred =q.defer();
     widgetModel
