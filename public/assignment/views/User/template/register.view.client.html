@@ -1,40 +1,63 @@
 
     <div class="container jumbotron animate bounceOut z-depth-5">
-        <div class="row">
-            <div class="col-xs-12">
-        <h1 class="text-center login-txt"><strong>Register</strong></h1>
-                <div class="alert alert-danger" ng-show="model.error">
-                    {{model.error}}
-                </div>
+        <form name="registerForm" novalidate>
+            <div class="row">
+                <div class="col-xs-12">
+            <h1 class="text-center login-txt"><strong>Register</strong></h1>
+                    <div class="alert alert-danger" ng-show="model.error">
+                        {{model.error}}
+                    </div>
 
-                <input type="text"
+                    <input type="text"
+                           class="form-control"
+                           placeholder="first name"
+                           ng-model="user.firstName"
+                           name="firstname"
+                           required/>
+                    <span ng-if="registerForm.$submitted && registerForm.firstname.$error.required">First Name is required</span>
+
+                    <input type="text"
+                           class="form-control"
+                           placeholder="last name"
+                           ng-model="user.lastName"
+                           name="lastname"
+                           required/>
+                    <span ng-if="registerForm.$submitted && registerForm.lastname.$error.required">Last Name is required</span>
+
+                    <input type="text"
                        class="form-control"
-                       placeholder="first name"
-                       ng-model="user.firstName"/>
-                <input type="text"
+                       placeholder="username"
+                        ng-model="user.username"
+                        name="registerUsername"
+                           required/>
+                    <span ng-if="registerForm.$submitted && registerForm.registerUsername.$error.required">Username is required</span>
+
+                    <input type="password"
                        class="form-control"
-                       placeholder="last name"
-                       ng-model="user.lastName"/>
-        <input type="text"
-               class="form-control"
-               placeholder="username"
-                ng-model="user.username"/>
-        <input type="password"
-               class="form-control"
-               placeholder="password"
-                ng-model="user.password"/>
-        <input type="password"
-               class="form-control"
-               placeholder="very password "
-            ng-model="user.verypassword"/>
+                       placeholder="password"
+                        ng-model="user.password"
+                        name="registerPassword"
+                           required/>
+                    <span ng-if="registerForm.$submitted && registerForm.registerPassword.$error.required">Username is required</span>
+
+                    <input type="password"
+                        class="form-control"
+                        placeholder="very password "
+                        ng-model="user.verypassword"
+                        name="registerVeryPassword"
+                    required/>
+                    <span ng-if="registerForm.$submitted && registerForm.registerVeryPassword.$error.required">Username is required</span>
+
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 input-margin">
-        <a class="btn btn-primary btn-block"
-           ng-click="model.registerUser(user)">Register</a>
-        <a class="btn btn-danger  btn-block"
-           href="#/login">Cancel</a>
+            <div class="row">
+                <div class="col-xs-12 input-margin">
+            <button class="btn btn-primary btn-block"
+               ng-click="model.registerUser(user)" name="registerButton">Register</button>
+            <a class="btn btn-danger  btn-block"
+               href="#/login">Cancel</a>
+                </div>
             </div>
-        </div>
+        </form>
+        {{registerForm}}
     </div>

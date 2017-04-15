@@ -61,23 +61,29 @@
             <div class="alert alert-danger" ng-show="model.error">
                 {{model.error}}
             </div>
-            <label for="page-name"><h4><strong>Name</strong></h4></label>
-            <div class="md-form">
-                <input ng-model="page.name"
-                       type="text" id="page-name"
-                       placeholder="Page Name"
-                       class="form-control">
-            </div>
-            <label for="page-title"><h4><strong>Title</strong></h4></label>
-            <div class="md-form">
-                <input ng-model="page.description"
-                       type="text" id="page-title"
-                       placeholder="Page Title"
-                       class="form-control">
-            </div>
-            <a ng-click="model.createPage(page)" class="btn btn-primary btn-block">
-                Create
-            </a>
+            <form name="newPageForm" novalidate>
+                <label for="page-name"><h4><strong>Name</strong></h4></label>
+                <div class="md-form">
+                    <input ng-model="page.name"
+                           type="text" id="page-name"
+                           placeholder="Page Name"
+                           class="form-control"
+                    name="pageName"
+                    required>
+                    <span ng-if="newPageForm.$submitted && newPageForm.pageName.$error.required">Page Name is required</span>
+
+                </div>
+                <label for="page-title"><h4><strong>Title</strong></h4></label>
+                <div class="md-form">
+                    <input ng-model="page.description"
+                           type="text" id="page-title"
+                           placeholder="Page Title"
+                           class="form-control">
+                </div>
+                <button ng-click="model.createPage(page)" class="btn btn-primary btn-block">
+                    Create
+                </button>
+            </form>
         </div>
     </div>
 </div>

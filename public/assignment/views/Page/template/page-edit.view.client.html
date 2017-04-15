@@ -56,13 +56,19 @@
             </ul>
         </div>
         <div class="col-sm-8 web-edit-right-pane col-xs-12">
+            <div class="alert alert-danger" ng-show="model.error">
+                {{model.error}}
+            </div>
+            <form name="pageEditForm" novalidate>
             <label for="page-name"><h4><strong>Name</strong></h4></label>
             <div class="md-form">
                 <input ng-model="model.page.name"
                        type="text"
                        id="page-name"
                        placeholder="Page Name"
-                       class="form-control">
+                       class="form-control" name="pageEditName" required>
+                <span ng-if="pageEditForm.$submitted && pageEditForm.pageEditName.$error.required">Page Name is required</span>
+
             </div>
             <label for="page-title"><h4><strong>Title</strong></h4></label>
             <div class="md-form">
@@ -72,14 +78,15 @@
                        placeholder="Page Title"
                        class="form-control">
             </div>
-            <a ng-click="model.updatePage(model.page)"
+            <button ng-click="model.updatePage(model.page)"
                class="btn btn-primary btn-block">
                 Update
-            </a>
+            </button>
             <a ng-click="model.deletePage()"
                class="btn btn-danger btn-block">
                 Delete
             </a>
+            </form>
         </div>
     </div>
 </div>

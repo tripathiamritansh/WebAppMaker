@@ -2,7 +2,7 @@
     angular
         .module("WebAppMaker")
         .controller("pageEditController", pageEditController);
-    function pageEditController($location, $routeParams, PageService) {
+    function pageEditController($location, $routeParams, PageService, $scope) {
         var vm=this;
         vm.userId=$routeParams.uid;
         vm.websiteId=$routeParams.wid;
@@ -28,6 +28,10 @@
         }
 
         function updatePage(page) {
+            if(!$scope.pageEditForm.valid){
+                vm.error="Please Enter the Page Name";
+                return;
+            }
             PageService
                 .updatePage(vm.pageId,page)
                 .success(function () {

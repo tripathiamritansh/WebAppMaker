@@ -12,69 +12,103 @@
             .when("/login",{
                 templateUrl:"views/User/template/login.view.client.html",
                 controller:"LoginController",
-                controllerAs:"model"
+                controllerAs:"model",
+               //resolve:{loggedin:checkLoggedin}
             })
             .when("/register",{
                 templateUrl:"views/User/template/register.view.client.html",
                 controller:"registerController",
-                controllerAs:"model"
+                controllerAs:"model",
+                //resolve:{loggedin:checkLoggedin}
             })
-            .when("/user/:uid",{
+            .when("/user",{
                 templateUrl:"views/User/template/profile.view.client.html",
                 controller:"profileController",
-                controllerAs:"model"
+                controllerAs:"model",
+                resolve:{loggedin:checkLoggedin}
             })
             .when("/user/:uid/websites",{
                 templateUrl:"views/Website/template/website-list.view.client.html",
                 controller:"websiteListController",
-                controllerAs:"model"
-            })
+                controllerAs:"model",
+                resolve:{loggedin:checkLoggedin}
 
+            })
             .when("/user/:uid/websites/new",{
                 templateUrl:"views/Website/template/website-new.view.client.html",
                 controller:"websiteNewController",
-                controllerAs:"model"
+                controllerAs:"model",
+                resolve:{loggedin:checkLoggedin}
+
             })
             .when("/user/:uid/websites/:wid",{
                 templateUrl:"views/Website/template/website-edit.view.client.html",
                 controller:"websiteEditController",
-                controllerAs:"model"
+                controllerAs:"model",
+                resolve:{loggedin:checkLoggedin}
             })
             .when("/user/:uid/websites/:wid/page",{
                 templateUrl:"views/Page/template/page-list.view.client.html",
                 controller:"pageListController",
-                controllerAs:"model"
+                controllerAs:"model",
+                resolve:{loggedin:checkLoggedin}
+
             })
             .when("/user/:uid/websites/:wid/page/new",{
                 templateUrl:"views/Page/template/page-new.view.client.html",
                 controller:"PageNewController",
-                controllerAs:"model"
+                controllerAs:"model",
+                resolve:{loggedin:checkLoggedin}
+
             })
             .when("/user/:uid/websites/:wid/page/:pid",{
             templateUrl:"views/Page/template/page-edit.view.client.html",
             controller:"pageEditController",
-            controllerAs:"model"
+            controllerAs:"model",
+                resolve:{loggedin:checkLoggedin}
             })
             .when("/user/:uid/websites/:wid/page/:pid/widget",{
                 templateUrl:"views/Widget/template/widget-list.view.client.html",
                 controller:"WidgetListController",
-                controllerAs:"model"
+                controllerAs:"model",
+                resolve:{loggedin:checkLoggedin}
             })
             .when("/user/:uid/websites/:wid/page/:pid/widget/new",{
                 templateUrl:"views/Widget/template/widget-chooser.view.client.html",
                 controller:"WidgetNewController",
-                controllerAs:"model"
+                controllerAs:"model",
+                resolve:{loggedin:checkLoggedin}
             })
             .when("/user/:uid/websites/:wid/page/:pid/widget/:wgid",{
                 templateUrl:"views/Widget/template/widget-edit.view.client.html",
                 controller:"WidgetEditController",
-                controllerAs:"model"
+                controllerAs:"model",
+                resolve:{loggedin:checkLoggedin}
             })
             .when("/user/:uid/websites/:wid/page/:pid/widget/:wgid/flickr",{
                 templateUrl:"views/Widget/template/editor/widget-flickr-search.view.client.html",
                 controller:"FlickrImageSearchController",
-                controllerAs:"model"
+                controllerAs:"model",
+                resolve:{loggedin:checkLoggedin}
 
+            })
+            .otherwise({
+                redirectTo:'/login'
             });
+        function checkLoggedin($q,$timeout,$http,$location,$rootScope) {
+            var deferred = $q.defer();
+            $http.get('/api/loggedin')
+                .success(function(user) {
+
+                    if (user !== '0') {
+
+                        deferred.resolve(user);
+                    } else {
+                        deferred.reject();
+                        $location.url('/login');
+                    }
+                });
+            return deferred.promise;
+        }
     }
 })();

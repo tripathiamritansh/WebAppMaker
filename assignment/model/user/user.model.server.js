@@ -12,8 +12,13 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials=findUserByCredentials;
 userModel.deleteUser = deleteUser;
 userModel.updateUser =updateUser;
+userModel.findUserByFacebookId =findUserByFacebookId;
 
 module.exports= userModel;
+
+function findUserByFacebookId(facebookId) {
+    return userModel.findOne({'facebook.id':facebookId});
+}
 
 function createUser(user) {
     var deferred = q.defer();
@@ -45,14 +50,12 @@ function findUserById(userId) {
 
 function findUserByUsername(username) {
     var deffered = q.defer();
-
     userModel
         .find({username:username}, function (err,user) {
-            if(err){
-
-                deffered.reject(err);
+            console.log(user);
+            if(user.length==0){
+                deffered.reject(user);
             }else {
-
                 deffered.resolve(user);
             }
         });

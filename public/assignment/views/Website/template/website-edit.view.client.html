@@ -70,11 +70,16 @@
         </div>
 
         <div class="col-sm-8 web-edit-right-pane col-xs-12">
+            <div class="alert alert-danger" ng-show="model.error">
+                {{model.error}}
+            </div>
+            <form name="WebsiteEditForm" novalidate>
             <label for="website-name">
                 <h4><strong>Website Name</strong></h4>
             </label>
                 <div class="md-form">
-                    <input type="text" ng-model="model.website.name" id="website-name"  placeholder="Website Name" class="form-control">
+                    <input type="text" ng-model="model.website.name" required id="website-name"  placeholder="Website Name" class="form-control" name="websiteEditName">
+                    <span ng-if="WebsiteEditForm.$submitted && WebsiteEditForm.websiteEditName.$error.required">Website Name is required</span>
                 </div>
             <label for="website-description"><h4><strong>Website Description</strong></h4></label>
             <div class="md-form">
@@ -82,13 +87,14 @@
                           id="website-description"
                           placeholder="website description" class="md-textarea"></textarea>
             </div>
-            <a ng-click="model.updateWebsite(model.website)"
+            <button ng-click="model.updateWebsite(model.website)"
                class="btn btn-primary btn-block">
                 Update
-            </a>
+            </button>
             <a ng-click="model.deleteWebsite()" class="btn btn-danger btn-block">
                 Delete
             </a>
+            </form>
         </div>
     </div>
 </div>

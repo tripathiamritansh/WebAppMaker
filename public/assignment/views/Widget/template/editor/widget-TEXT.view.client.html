@@ -1,14 +1,19 @@
 
 <div class="widget-text-custom">
-    <label for="widget-text"><strong>Text</strong></label>
-    <input id="widget-text" ng-model="model.widget.text" class="form-control"/>
-    <label for="widget-row"><strong>Rows</strong></label>
-    <input id="widget-row" ng-model="model.widget.rows" class="form-control" type="number"/>
-    <label for="widget-placeholder"><strong>Placeholder</strong></label>
-    <input id="widget-placeholder" ng-model="model.widget.placeholder" class="form-control"/>
-    <label for="widget-formatted" for="widget-placeholder"><strong>Formatted</strong></label>
-    <input id="widget-formatted" ng-model="model.widget.formatted" type="checkbox"/>
-    <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block">
-        Delete
-    </a>
+    <form name="textWidget">
+        <label for="widget-text"><strong>Text</strong></label>
+        <input id="widget-text" ng-model="model.widget.text" class="form-control" required/>
+        <label for="widget-row"><strong>Rows</strong></label>
+        <input id="widget-row" ng-model="model.widget.rows" class="form-control" type="number"/>
+        <label for="widget-placeholder"><strong>Placeholder</strong></label>
+        <input id="widget-placeholder" ng-model="model.widget.placeholder" class="form-control"/>
+        <label for="widget-formatted" for="widget-placeholder"><strong>Formatted</strong></label>
+        <input id="widget-formatted" ng-model="model.widget.formatted" type="checkbox"/>
+        <button ng-click="model.update(model.widget)" class="btn btn-primary btn-block">
+            Create
+        </button>
+        <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block">
+            Delete
+        </a>
+    </form>
 </div>

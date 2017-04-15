@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("websiteEditController", websiteEditController);
     
-    function websiteEditController($location, $routeParams,WebsiteService){
+    function websiteEditController($location, $routeParams,WebsiteService,$scope){
      var vm=this;
      vm.userId=$routeParams.uid;
      vm.websites=WebsiteService.findAllWebsitesForUser(vm.userId);
@@ -29,6 +29,10 @@
      }
 
      function updateWebsite(website) {
+         if(!$scope.WebsiteEditForm.valid){
+             vm.error="Please Enter the Website Name";
+             return;
+         }
          WebsiteService
              .updateWebsite(vm.websiteId,website)
              .success(function(){

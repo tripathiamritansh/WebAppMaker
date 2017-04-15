@@ -75,23 +75,25 @@
             <div class="alert alert-danger" ng-show="model.nameError">
                 {{model.nameError}}
             </div>
+            <form name="websiteNewForm" novalidate>
+                <label for="website-name"><h4><strong>Website Name</strong></h4></label>
+                <div class="md-form">
+                    <input  ng-model="website.name"type="text" id="website-name"  placeholder="Website Name" class="form-control" name="websiteName"required>
+                    <span ng-if="websiteNewForm.$submitted && websiteNewForm.websiteName.$error.required">Website Name is required</span>
+                </div>
+                <label for="website-description"><h4><strong>Website Description</strong></h4></label>
+                <div class="md-form">
+                    <textarea ng-model="website.description"
+                              id="website-description"
+                              placeholder="Website description"
+                              class="md-textarea"></textarea>
+                </div>
 
-            <label for="website-name"><h4><strong>Website Name</strong></h4></label>
-            <div class="md-form">
-                <input ng-model="website.name"type="text" id="website-name"  placeholder="Website Name" class="form-control">
-            </div>
-            <label for="website-description"><h4><strong>Website Description</strong></h4></label>
-            <div class="md-form">
+                <button ng-click="model.createWebsite(website)" class="btn btn-primary btn-block">
+                    Create
+                </button>
+            </form>
 
-                <textarea ng-model="website.description"
-                          id="website-description"
-                          placeholder="Website description"
-                          class="md-textarea"></textarea>
-            </div>
-
-            <a ng-click="model.createWebsite(website)" class="btn btn-primary btn-block">
-                Create
-            </a>
         </div>
     </div>
 </div>

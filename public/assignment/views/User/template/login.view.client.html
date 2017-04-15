@@ -3,28 +3,36 @@
 
 
         <div class="row jumbotron animate bounceOut z-depth-5">
-
-
             <div class="row">
                 <div class="col-xs-12">
                     <h1 class="text-center login-txt"><strong>Login</strong></h1>
                     <div ng-show="model.error" class="alert alert-danger" role="alert">
                         {{model.error}}</div>
-                <input ng-model="user.username"
-                        id="username"
-                       type="text"
-                       class="form-control input-margin"
-                       placeholder="username"/>
-                <input ng-model="user.password"
-                        id="password"
-                       type="password"
-                       class="form-control input-margin"
-                       placeholder="password"/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 input-margin">
-                <a ng-click="model.login(user)" class="btn btn-primary btn-block">Login</a>
+                    <form name="loginForm" novalidate>
+                        <input ng-model="user.username"
+                            id="username"
+                           type="text"
+                           class="form-control input-margin"
+                           placeholder="username"
+                        name="username"
+                        required/>
+                        <span ng-if="loginForm.$submitted && loginForm.username.$error.required">Username is Required</span>
+
+                        <input ng-model="user.password"
+                            id="password"
+                           type="password"
+                           class="form-control input-margin"
+                           placeholder="password"
+                        name="password"
+                        required/>
+                        <span ng-if="loginForm.$submitted && loginForm.password.$error.required">Password is required</span>
+                        <button name="loginButton" ng-click="model.login(user)" class="btn btn-primary btn-block">Login</button>
+                    </form>
+
+                    <a href="/auth/facebook" class="btn btn-primary btn-block">
+                        <span class="fa fa-facebook"></span>
+                        Facebook
+                    </a>
                 <a class="btn btn-success btn-block"
                    href="#/register">Register</a>
                 </div>

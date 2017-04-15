@@ -3,23 +3,28 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="at-widgit-heading col-md-6 col-sm-12">
-            <label for="widget-name"><h4><strong>Name</strong></h4></label>
+            <form name="headerWidget">
+                <label for="widget-name"><h4><strong>Name</strong></h4></label>
 
-            <div class="md-form">
-                <input type="text" id="widget-name"  placeholder="Widget Name" class="form-control">
-            </div>
+                <div class="md-form">
+                    <input type="text" id="widget-name" required placeholder="Widget Name" class="form-control">
+                </div>
 
-            <label for="widget-text"><h4><strong>Text</strong></h4></label>
-            <div class="md-form">
-                <input type="text" ng-model="model.widget.text" id="widget-text"  placeholder="Widget Text" class="form-control">
-            </div>
-            <label for="widget-size"><h4><strong>Size</strong></h4></label>
-            <div class="md-form">
-                <input type="number" ng-model="model.widget.size" id="widget-size"  placeholder="Widget size" class="form-control">
-            </div>
-            <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block">
-                Delete
-            </a>
+                <label for="widget-text"><h4><strong>Text</strong></h4></label>
+                <div class="md-form">
+                    <input type="text" ng-model="model.widget.text" id="widget-text"  placeholder="Widget Text" class="form-control">
+                </div>
+                <label for="widget-size"><h4><strong>Size</strong></h4></label>
+                <div class="md-form">
+                    <input type="number" ng-model="model.widget.size" id="widget-size"  placeholder="Widget size" class="form-control">
+                </div>
+                <button ng-click="model.update(model.widget)" class="btn btn-primary btn-block">
+                    Create
+                </button>
+                <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block">
+                    Delete
+                </a>
+            </form>
         </div>
         <div class="col-md-3"></div>
     </div>

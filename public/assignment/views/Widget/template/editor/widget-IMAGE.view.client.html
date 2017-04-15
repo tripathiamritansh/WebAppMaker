@@ -2,13 +2,14 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="at-widgit-heading col-md-6 col-sm-12">
-            <form action="/api/upload" method="post" enctype="multipart/form-data">
+            <form name="imageWidget" action="/api/upload" method="post" enctype="multipart/form-data">
                 <label for="widget-name-image"><h4><strong>Name</strong></h4></label>
                     <div class="md-form">
                         <input type="text"
                                id="widget-name-image"
                                placeholder="Widget Name"
-                               class="form-control">
+                               class="form-control"
+                               required>
                     </div>
 
                 <label for="widget-text-image"><h4><strong>Text</strong></h4></label>
@@ -60,9 +61,11 @@
                 <button type="submit" class="btn btn-primary btn-block">
                     Upload Image
                 </button>
+
                 <a href="#/user/{{model.userId}}/websites/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}/flickr" class="btn btn-success btn-block">
                     Search
                 </a>
+
                 <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block">
                     Delete
                 </a>
