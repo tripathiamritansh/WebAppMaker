@@ -6,9 +6,10 @@ module.exports=function (app, userModel) {
     var bcrypt = require("bcrypt-nodejs");
 
     var facebookConfig = {
-        clientID     : '1828253887436933',
-        clientSecret : '77daabdde63e782601d39ac175c5b27e',
-        callbackURL  : 'http://localhost:3000/auth/facebook/callback'
+        clientID     : process.env.WEBAPP_FACEBOOK_CLIENT_ID,
+        clientSecret : process.env.WEBAPP_FACEBOOK_CLIENT_SECRET,
+        callbackURL  : process.env.WEBAPP_FACEBOOK_CALLBACKURL
+
     };
     var FacebookStrategy = require('passport-facebook').Strategy;
     passport.serializeUser(serializeUser);
