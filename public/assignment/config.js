@@ -90,7 +90,6 @@
                 controller:"FlickrImageSearchController",
                 controllerAs:"model",
                 resolve:{loggedin:checkLoggedin}
-
             })
             .otherwise({
                 redirectTo:'/login'

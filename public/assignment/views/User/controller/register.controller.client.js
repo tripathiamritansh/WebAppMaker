@@ -32,8 +32,8 @@
                                 function (response) {
                                     console.log(response.data._id);
                                     var user = response.data;
-
-                                    $location.url("/user/" + response.data._id);
+                                    console.log("routing");
+                                    $location.url("/user");
                                 }, function (err) {
                                     vm.error = "Oops! Sorry could not register";
                                 });
@@ -48,7 +48,7 @@
                                 console.log(response.data._id);
                                 var user = response.data;
                                 $rootScope.currentUser = user;
-                                $location.url("/user/" + response.data._id);
+                                $location.url("/user");
                             }, function (err) {
                                 vm.error = "Oops! Sorry could not register";
                             });
