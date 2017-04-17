@@ -1,56 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Amritansh Tripathi</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.2.0/css/mdb.css" rel="stylesheet"/>
-    <link href="css-homepage.css" rel="stylesheet"/>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>Animated Background Headers | Demo 1</title>
+		<meta name="description" content="Examples for creative website header animations using Canvas and JavaScript" />
+		<meta name="keywords" content="header, canvas, animated, creative, inspiration, javascript" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="./HOMEPAGE/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="HOMEPAGE/css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="HOMEPAGE/css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="HOMEPAGE/css/component.css" />
+		<link href='http://fonts.googleapis.com/css?family=Raleway:200,400,800' rel='stylesheet' type='text/css'>
+		<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
 
-    <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
-    <script src="./js/particles.min.js"></script>
-</head>
-<body>
+		<link rel="stylesheet" href="HOMEPAGE/css/demo.css">
+		<link rel="stylesheet" href="HOMEPAGE/css/footer-distributed-with-address-and-phones.css">
 
-<div id="particles-js">
-    <div class="container">
-        <div class="page-header center-header TextMargin">
-            <h1>Hey! <small>i'm <bold>Amritansh</bold></small></h1>
-        </div >
-    </div>
-</div>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+		<link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+		<link href="HOMEPAGE/css/mystyle.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container demo-1">
+			<div class="content">
+				<div id="large-header" class="large-header">
+					<canvas id="demo-canvas"></canvas>
+					<h1 class="main-title">Hey! <span class="thin">i'm <bold>Amritansh</bold></span></h1>
+
+				</div>
+				<p>
+				</p>
+				<p>
+				</p>
+				<br>
+				<div class="codrops-header">
+					<h1>Full Stack Web Developer <span>Experience with AngularJS, MongoDB, Express, NodeJS and Responsive Web Design</span></h1>
+					<nav class="codrops-demos">
+						<a href="assignment/#/login"><i class="fa fa-university" aria-hidden="true"></i>Assignment</a>
+						<a href="https://github.com/tripathiamritansh/tripathi-amritansh-webdev"><i class="fa fa-github" aria-hidden="true"></i> Github</a>
+						<a href="https://www.linkedin.com/in/amritanshtripathi/"><i class="fa fa-linkedin-square" aria-hidden="true"></i>Linkedin</a>
+						<a href="https://www.instagram.com/amritanshtripathi/"><i class="fa fa-instagram"></i>Instagram</a>
+					</nav>
+				</div>
+			</div>
+					</div><!-- /container -->
+		<script src="HOMEPAGE/js/TweenLite.min.js"></script>
+		<script src="HOMEPAGE/js/EasePack.min.js"></script>
+		<script src="HOMEPAGE/js/rAF.js"></script>
+		<script src="HOMEPAGE/js/demo-1.js"></script>
+		<footer class="footer-distributed">
+
+			<div class="footer-left">
+				<img src="homepageImage/profileImage.jpg" class="img-fluid" alt="Responsive image">
+				<p class="footer-company-name">Amritansh Tripathi &copy; 2017</p>
+			</div>
+
+			<div class="footer-center">
+
+				<div>
+					<i class="fa fa-map-marker"></i>
+					<p><span>256 Parker Hill Avenue</span> Boston, MA, USA</p>
+				</div>
+
+				<div>
+					<i class="fa fa-phone"></i>
+					<p>+1 6176517464</p>
+				</div>
+
+				<div>
+					<i class="fa fa-envelope"></i>
+					<p><a href="mailto:support@company.com">tripathi.a@husky.neu.edu</a></p>
+				</div>
+
+			</div>
+
+			<div class="footer-right">
+
+				<p class="footer-company-about">
+					<span>About Amritansh Tripathi</span>
+					Amritansh is a Graduate Computer Science Student at Northeastern University and has interest in applications of Artificial Intelligence and Machine Learning in real world problems.
+				</p>
+
+				<div class="footer-icons">
 
 
-<script src="js/particleApp.js"></script>
-<nav class="navbar navbar-inverse" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Amritansh Tripathi</a>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="assignment/#/login"><i class="fa fa-university" aria-hidden="true"></i> Assignment</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-earphone"></span> Contact</a></li>
-            <li><a href="https://github.com/tripathiamritansh/tripathi-amritansh-webdev"><i class="fa fa-github" aria-hidden="true"></i> Github</a></li>
-            <li><a href="https://www.linkedin.com/in/amritanshtripathi/"><i class="fa fa-linkedin-square" aria-hidden="true"></i> linkedin</a></li>
-        </ul>
-    </div>
-</nav>
-<div class="container">
-    <div class="page-header center-header">
-        <h1>Hey! <small>i'm <bold>Amritansh</bold></small></h1>
-    </div >
-    <div class="center-header" id="boxshadow">
-        <img src="./homepageImage/profileImage.jpg" class="img-fluid" alt="Responsive image">
-    </div>
+					<a href="https://www.instagram.com/amritanshtripathi/"><i class="fa fa-instagram"></i></a>
+					<a href="https://www.linkedin.com/in/amritanshtripathi/"><i class="fa fa-linkedin"></i></a>
+					<a href="https://github.com/tripathiamritansh/tripathi-amritansh-webdev"><i class="fa fa-github"></i></a>
 
-</div>
+				</div>
 
-</body>
+			</div>
+
+		</footer>
+	</body>
 </html>
