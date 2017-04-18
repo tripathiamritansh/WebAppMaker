@@ -1,6 +1,8 @@
 
 <div class="widget-text-custom">
-    <form name="textWidget">
+    <div ng-show="model.error" class="alert alert-danger error-text" role="alert">
+        {{model.error}}</div>
+       <form name="textWidget">
         <label for="widget-text"><strong>Text</strong></label>
         <input id="widget-text" ng-model="model.widget.text" class="form-control" required/>
         <label for="widget-row"><strong>Rows</strong></label>
@@ -9,7 +11,7 @@
         <input id="widget-placeholder" ng-model="model.widget.placeholder" class="form-control"/>
         <label for="widget-formatted" for="widget-placeholder"><strong>Formatted</strong></label>
         <input id="widget-formatted" ng-model="model.widget.formatted" type="checkbox"/>
-        <button ng-click="model.update(model.widget)" class="btn btn-primary btn-block">
+        <button ng-click="model.updateWidget(model.widget)" class="btn btn-primary btn-block">
             Create
         </button>
         <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block">

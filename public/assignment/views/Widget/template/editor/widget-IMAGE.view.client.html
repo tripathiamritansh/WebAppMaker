@@ -1,6 +1,9 @@
 <div class="container-fluid">
-    <div class="row">
+    <div ng-show="model.error" class="alert alert-danger error-text" role="alert">
+        {{model.error}}</div>
+        <div class="row">
         <div class="col-md-3"></div>
+
         <div class="at-widgit-heading col-md-6 col-sm-12">
             <form name="imageWidget" action="/api/upload" method="post" enctype="multipart/form-data">
                 <label for="widget-name-image"><h4><strong>Name</strong></h4></label>
@@ -9,6 +12,7 @@
                                id="widget-name-image"
                                placeholder="Widget Name"
                                class="form-control"
+                               name="name"
                                required>
                     </div>
 
