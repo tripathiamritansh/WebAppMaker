@@ -1,4 +1,4 @@
-<img src="Images/image1.png" width="250"/> <img src="Images/image2.png" width="250"/> <img src="Images/image3.png" width="250"/> <img src="Images/image4.png" width="250"/> <img src="Images/image5.png" width="250"/>
+<img src="Images/image1.png" width="350"/> <img src="Images/image2.png" width="350"/> <img src="Images/image3.png" width="350"/> <img src="Images/image4.png" width="350"/> <img src="Images/image5.png" width="350"/>
 ### Description
 
 The project was aimed at creating blogging websites where a user can create a blogging application in the browser itself. A blogging application can have pages and each page can have a widget. A widget can have a youtube video, images, text or header. Widgets can be dragged and dropped to change their position on a page.
